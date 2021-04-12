@@ -1,21 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState }  from 'react';
+
+import {NavigationContainer,useNavigation} from '@react-navigation/native'
+import RegisterScreen from './app/screens/RegisterScreen';
+import AuthNavigator from './app/navigations/AuthNavigatior';
+import  AppNavigator from "./app/navigations/AppNavigator";
+import NavigationTheme from './app/navigations/NavigationTheme'
+import NetInfo from '@react-native-community/netinfo';
+import Screen from './app/component/Screen'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import OfflineNotice from './app/component/OfflineNotice';
+import { View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Screen>
+    <OfflineNotice />
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
+    </Screen>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
